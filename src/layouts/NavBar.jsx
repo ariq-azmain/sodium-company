@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link'
 
 import { navLinks } from '@/constant'
-import { SingIn, SingOut } from '@/components'
+import { SignIn, SignOut } from '@/components'
 
 const NavBar = () => {
   // const { isLoaded, isSignedIn, user } = useUser();
@@ -24,7 +24,7 @@ const NavBar = () => {
                 <img className="h-[45px] w-[45px]" src="/images/icons/user.svg" alt="profile"/>
               </a>
           ) : (
-            <SingIn />
+            <SignIn />
           )}
           {
             isSignedIn && (
