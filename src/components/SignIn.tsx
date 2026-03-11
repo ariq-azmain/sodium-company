@@ -1,7 +1,7 @@
 'use client'
 import { SignInButton } from "@clerk/nextjs"
 
-const SingIn = () => {
+const SignIn = () => {
   return (
     <SignInButton>
       <button className="sing-in-btn flex m-10 font-black
@@ -12,4 +12,4 @@ const SingIn = () => {
     </SignInButton>
   )
 }
-export default SingIn;
+export default SignIn;

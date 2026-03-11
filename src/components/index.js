@@ -6,8 +6,8 @@ import FaqItem from './FaqItem.jsx'
 import CTA from './CTA.jsx'
 import Hero from './Hero.jsx'
 import { Marker } from './Marker.jsx'
-import SingIn from './SingIn.tsx'
-import SingOut from './SingOut.tsx'
+import SignIn from './SignIn.tsx'
+import SignOut from './SignOut.tsx'
 
 export {
   Button,
@@ -18,6 +18,6 @@ export {
   Marker,
   FaqItem,
   Alert,
-  SingIn,
-  SingOut
+  SignIn,
+  SignOut
 }

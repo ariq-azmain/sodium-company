@@ -7,7 +7,7 @@ import { navLinks } from '@/constant'
 import { SingIn, SingOut } from '@/components'
 
 const NavBar = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
+  // const { isLoaded, isSignedIn, user } = useUser();
   return (
     <header>
       <nav>
@@ -17,7 +17,7 @@ const NavBar = () => {
           </div>
         </Link>
         <div className="sing-in-btn-container overflow-visible bottom-[13px]">
-          {!isLoaded ? (
+{/*           {!isLoaded ? (
             <div>Loading ...</div>
           ) : isSignedIn ? (
             <SingOut />
@@ -26,9 +26,10 @@ const NavBar = () => {
           )}
           {
             isSignedIn && (
-              <p className="font-black text-4xl text-blue-800">{user.firstName}</p>
+              <p className="font-black text-xl text-blue-800">{user.firstName}</p>
             )
-          }
+          } */
+}
         </div>
         <ul>
           {
