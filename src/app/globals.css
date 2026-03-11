@@ -9,13 +9,6 @@
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.15);
 }
-@theame {
-  --color-bg-dark: #050505;
-  --color-purple: #a855f7;
-  --color-blue: #6366f1;
-  --color-glass: rgba(255, 255, 255, 0.05);
-  --color-glass-border: rgba(255, 255, 255, 0.15);
-}
 * {
   margin: 0;
   padding: 0;
