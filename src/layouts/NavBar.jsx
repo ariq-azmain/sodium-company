@@ -17,19 +17,23 @@ const NavBar = () => {
           </div>
         </Link>
         <div className="sing-in-btn-container overflow-visible bottom-[13px]">
-{/*           {!isLoaded ? (
+           {!isLoaded ? (
             <div>Loading ...</div>
           ) : isSignedIn ? (
-            <SingOut />
+              <a href='/user/'>
+                <img className="h-[45px] w-[45px]" src="/images/icons/user.svg" alt="profile"/>
+              </a>
           ) : (
             <SingIn />
           )}
           {
             isSignedIn && (
-              <p className="font-black text-xl text-blue-800">{user.firstName}</p>
+              <a href='/user/'>
+                <img className="h-[45px] w-[45px]" src="/images/icons/user.svg" alt="profile"/>
+              </a>
             )
-          } */
-}
+          }
+
         </div>
         <ul>
           {
