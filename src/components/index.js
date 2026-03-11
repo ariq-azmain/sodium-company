@@ -6,6 +6,8 @@ import FaqItem from './FaqItem.jsx'
 import CTA from './CTA.jsx'
 import Hero from './Hero.jsx'
 import { Marker } from './Marker.jsx'
+import SingIn from './SingIn.tsx'
+import SingOut from './SingOut.tsx'
 
 export {
   Button,
@@ -15,5 +17,7 @@ export {
   CanvasLoader,
   Marker,
   FaqItem,
-  Alert
+  Alert,
+  SingIn,
+  SingOut
 }

@@ -1,8 +1,9 @@
-import { currentUser, SignInButton, SignOutButton } from "@clerk/nextjs/server";
+import { currentUser } from "@clerk/nextjs/server"
 
 import Link from 'next/link'
 
-import { navLinks } from '@/constant';
+import { navLinks } from '@/constant'
+import { SingIn, SingOut } from '@/components'
 
 const NavBar = async () => {
   try {
@@ -21,20 +22,9 @@ const NavBar = async () => {
         <div className="sing-in-btn-container overflow-visible bottom-[13px]">
         { 
         !user ? (
-          <SignInButton>
-          
-          <button className="sing-in-btn flex m-10 font-black
-            bg-gradient-to-tl to-[#0fff9e] from-[#09fcff] rounded-xl h-8 w-16
-            text-gray-200 relative justify-center items-center text-sm">
-              Sing In
-            </button>
-          </SignInButton>
+            <SingIn/>
             ) : (
-              <div className="">
-                <p>{user.id}</p>
-                <p>{user.firstName}</p>
-                <SignOutButton>Sing Out</SignOutButton>
-              </div>
+              <SingOut/>
             )
         }
         </div>
