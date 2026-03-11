@@ -1,5 +1,5 @@
 import { currentUser } from '@clerk/nextjs/server';
-import { SignOut } from '@/components'; // আপনার দেওয়া পাথ অনুযায়ী
+import { SignOut } from '@/components';
 
 export default async function UserPage() {
   const user = await currentUser();

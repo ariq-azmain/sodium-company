@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link'
 
 import { navLinks } from '@/constant'
-import { SignIn, SignOut } from '@/components'
+import { SignIn } from '@/components'
 
 const NavBar = () => {
-  // const { isLoaded, isSignedIn, user } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
   return (
     <header>
       <nav>
