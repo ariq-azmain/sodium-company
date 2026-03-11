@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+.summary-head-text{
+  @apply text-5xl font-black font-sans relative top-0 text-center text-[#fff7c9] overflow-hidden;
+}
+.summary-head-text .text-gradient{
+    background: -webkit-linear-gradient(bottom right, #43519d, #5d439d, #85439d, #9d4399, #9d437b, #9d435c, #9d4343);
+    background: -moz-linear-gradient(bottom right, #43519d, #5d439d, #85439d, #9d4399, #9d437b, #9d435c, #9d4343);
+    background: -o-linear-gradient(bottom right, #43519d, #5d439d, #85439d, #9d4399, #9d437b, #9d435c, #9d4343);
+    background: linear-gradient(to top left, #43519d, #5d439d, #85439d, #9d4399, #9d437b, #9d435c, #9d4343);
+    background-clip: text;
+    color: transparent;
+}
+.summary-body-text{
+
+}
+#body-text{
+  @apply relative text-xl font-light font-sans text-center text-slate-300 inline-block opacity-100  selection:text-neutral-900 selection:bg-cyan-100;
+/*   animation: see linear both;
+  font-family: Arial;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%; */
+}
+
+/* @keyframes see{
+  0%{
+    opacity: 0.8;
+  }50%{
+    opacity: 1;
+    color: #fff;
+    font-weight: bolder;
+  }100%{
+    opacity: 0.8;
+    font-weight: 300;
+    color: #94a3b8;
+  }
+} */

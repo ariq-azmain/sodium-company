@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Hero */
+.hero {
+  position: relative;
+  padding-top: 175px;
+  text-align: left;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero .text-content{
+  position: relative;
+  z-index: 20;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 0 0 9px #000;
+  font-weight: bolder;
+}
+
+.hero span {
+  background: -webkit-linear-gradient(bottom right, #bc44ff, #e844ff, #ff44f6, #ff44a3, #ff447a, #ff445f, #ff4444);
+  background: -moz-linear-gradient(bottom right, #bc44ff, #e844ff, #ff44f6, #ff44a3, #ff447a, #ff445f, #ff4444);
+  background: -o-linear-gradient(bottom right, #bc44ff, #e844ff, #ff44f6, #ff44a3, #ff447a, #ff445f, #ff4444);
+  background: linear-gradient(to top left, #bc44ff, #e844ff, #ff44f6, #ff44a3, #ff447a, #ff445f, #ff4444);
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.hero p {
+  max-width: 600px;
+  margin-bottom: 30px;
+  color: #ccc;
+  opacity: 0;
+}
+
+.hero-logo {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  animation: float 4s ease-in-out infinite both;
+  filter: drop-shadow(0 0 40px var(--blue));
+  z-index: -1;
+}
+
+.hero-bg{
+  @apply absolute z-[-50] top-[100px] z-[5] md:top-[130px] lg:top-[150px] xl:top-[155px] 2xl:top-[160px] opacity-25 h-[680px] w-[100vw];
+}
