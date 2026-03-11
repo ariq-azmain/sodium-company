@@ -26,14 +26,6 @@ const NavBar = () => {
           ) : (
             <SignIn />
           )}
-          {
-            isSignedIn && (
-              <a href='/user/'>
-                <img className="h-[45px] w-[45px]" src="/images/icons/user.svg" alt="profile"/>
-              </a>
-            )
-          }
-
         </div>
         <ul>
           {
