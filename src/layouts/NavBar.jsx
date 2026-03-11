@@ -1,37 +1,39 @@
-import { currentUser } from "@clerk/nextjs/server"
-
+'use client';
+import { useUser } from '@clerk/nextjs';
+import { useState } from 'react';
 import Link from 'next/link'
 
 import { navLinks } from '@/constant'
 import { SingIn, SingOut } from '@/components'
 
-const NavBar = async () => {
-  try {
-    user = await currentUser();
-  } catch (error) {
-    console.error("Clerk Connection Error:", error);
-  }
+const NavBar = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
   return (
     <header>
       <nav>
-      <Link href="/">
-        <div className="logo">
-          <span>SODUM</span>
-        </div>
-      </Link>
+        <Link href="/">
+          <div className="logo">
+            <span>SODUM</span>
+          </div>
+        </Link>
         <div className="sing-in-btn-container overflow-visible bottom-[13px]">
-        { 
-        !user ? (
-            <SingIn/>
-            ) : (
-              <SingOut/>
+          {!isLoaded ? (
+            <div>Loading ...</div>
+          ) : isSignedIn ? (
+            <SingOut />
+          ) : (
+            <SingIn />
+          )}
+          {
+            isSignedIn && (
+              <p className="font-black text-4xl text-blue-800">{user.firstName}</p>
             )
-        }
+          }
         </div>
         <ul>
           {
             navLinks.map(({ name, href, id }) => (
-            <li key={id}><Link href={href} className="NavLink" >{name}</Link></li>
+              <li key={id}><Link href={href} className="NavLink" >{name}</Link></li>
             ))
           }
         </ul>
