@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: [true, 'email is required'],
     unique: true
   },
   username: {
@@ -38,11 +38,9 @@ const UserSchema = new mongoose.Schema({
   }
 });
 
-// Update করার সময় updatedAt আপডেট হবে
 UserSchema.pre('save', function(next) {
   this.updatedAt = Date.now();
   next();
 });
 
-// মডেল যদি আগে থাকে তাহলে সেটা ব্যবহার করবে, না থাকলে নতুন তৈরি করবে
 export default mongoose.models.User || mongoose.model('User', UserSchema);
