@@ -44,59 +44,64 @@ export default function RegisterPage() {
   }
 };
 
-  const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
+const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  setMessage('');
 
-    try {
-      console.log('Verifying code for:', email);
-      const response = await axios.post('/api/auth/verify-code', { email, code });
-      console.log('Verify code response:', response.data);
-      if (response.data.success) {
-        setMessage('Email verified! Now complete your registration.');
-        setStep(3);
-      }
-    } catch (err) {
-      console.error('Verify code error:', err);
+  try {
+    console.log('Verifying code for:', email);
+    const response = await axios.post('/api/auth/verify-code', { email, code });
+    console.log('Verify code response:', response.data);
+    if (response.data.success) {
+      setMessage('Email verified! Now complete your registration.');
+      setStep(3);
+    }
+  } catch (err) {
+    console.error('Verify code error:', err);
+    if (axios.isAxiosError(err)) {
       console.error('Error response:', err.response?.data);
       setError(err.response?.data?.error || 'Invalid code');
-    } finally {
-      setLoading(false);
+    } else {
+      setError('An unexpected error occurred');
     }
-  };
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  setMessage('');
 
-    try {
-      console.log('Registering user:', { email, username });
-      const response = await axios.post('/api/users', {
-        email,
-        username,
-        password,
-        firstName,
-        lastName,
-      });
-      console.log('Register response:', response.data);
-      if (response.data.success) {
-        setMessage('Registration successful! You are now logged in.');
-        // ঐচ্ছিক: রিডাইরেক্ট করতে পারো
-        // router.push('/dashboard');
-      }
-    } catch (err) {
-      console.error('Register error:', err);
+  try {
+    console.log('Registering user:', { email, username });
+    const response = await axios.post('/api/users', {
+      email,
+      username,
+      password,
+      firstName,
+      lastName,
+    });
+    console.log('Register response:', response.data);
+    if (response.data.success) {
+      setMessage('Registration successful! You are now logged in.');
+    }
+  } catch (err) {
+    console.error('Register error:', err);
+    if (axios.isAxiosError(err)) {
       console.error('Error response:', err.response?.data);
       setError(err.response?.data?.error || 'Registration failed');
-    } finally {
-      setLoading(false);
+    } else {
+      setError('An unexpected error occurred');
     }
-  };
-
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="!mt-[300px] min-h-screen bg-gray-200 text-black !py-12 !px-4 sm:!px-6 lg:!px-8">
       <div className="max-w-md !mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
