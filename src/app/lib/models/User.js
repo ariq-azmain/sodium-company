@@ -1,48 +1,63 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const UserSchema = new mongoose.Schema({
-  clerkId: {
-    type: String,
-    required: true,
-    unique: true,
-    index: true
-  },
   email: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, 'Email is required'],
+    unique: true,
+    lowercase: true,
+    trim: true,
   },
   username: {
     type: String,
-    required: [true, 'username is required']
+    required: [true, 'Username is required'],
+    trim: true,
+    minlength: [3, 'Username must be at least 3 characters'],
+    maxlength: [20, 'Username cannot exceed 20 characters'],
   },
-  firstName: String,
-  lastName: String,
-  profileImageUrl: String,
-  provider: {
+  firstName: {
     type: String,
-    enum: ['google', 'github', 'facebook'],
-    required: [true, 'Provider Is Required']
+    trim: true,
+    maxlength: [50, 'First name too long'],
   },
-  lastLogin: {
-    type: Date,
-    default: Date.now
+  lastName: {
+    type: String,
+    trim: true,
+    maxlength: [50, 'Last name too long'],
+  },
+  status: {
+    type: String,
+    required: [true, 'Status is required'],
+    enum: ['pending', 'accept', 'reject'],
+    default: 'pending'
+  },
+  password: {
+    type: String,
+    required: [true, 'Password is required'],
+    select: false,
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+});
+
+// Hash password before saving
+UserSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error);
   }
 });
 
-// Update করার সময় updatedAt আপডেট হবে
-UserSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
-});
+// Compare password method for login
+UserSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
 
-// মডেল যদি আগে থাকে তাহলে সেটা ব্যবহার করবে, না থাকলে নতুন তৈরি করবে
 export default mongoose.models.User || mongoose.model('User', UserSchema);

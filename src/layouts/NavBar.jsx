@@ -1,13 +1,9 @@
-'use client';
-import { useUser } from '@clerk/nextjs';
-import { useState } from 'react';
 import Link from 'next/link'
 
 import { navLinks } from '@/constant'
-import { SignIn } from '@/components'
 
 const NavBar = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
+  // const { isLoaded, isSignedIn, user } = useUser();
   return (
     <header>
       <nav>
@@ -17,15 +13,7 @@ const NavBar = () => {
           </div>
         </Link>
         <div className="sing-in-btn-container overflow-visible bottom-[13px]">
-           {!isLoaded ? (
-            <div>Loading ...</div>
-          ) : isSignedIn ? (
-              <a href='/user/'>
-                <img className="h-[45px] w-[45px]" src="/images/icons/user.svg" alt="profile"/>
-              </a>
-          ) : (
-            <SignIn />
-          )}
+          <Link href="/ragister">ragister</Link>
         </div>
         <ul>
           {
