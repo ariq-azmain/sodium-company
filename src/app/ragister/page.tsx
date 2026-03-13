@@ -1,10 +1,8 @@
-// app/register/page.js
 'use client';
 
 import { useState } from 'react';
 import axios from 'axios';
 
-// Axios কনফিগারেশন – কুকি পাঠানোর জন্য
 axios.defaults.withCredentials = true;
 
 export default function RegisterPage() {
@@ -19,7 +17,6 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  // ধাপ ১: ইমেইল পাঠিয়ে কোড রিকোয়েস্ট
   const handleSendCode = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -43,7 +40,6 @@ export default function RegisterPage() {
     }
   };
 
-  // ধাপ ২: কোড ভেরিফাই করে verification_token কুকি সেট করবে
   const handleVerifyCode = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -67,7 +63,6 @@ export default function RegisterPage() {
     }
   };
 
-  // ধাপ ৩: ইউজার তৈরি (পাসওয়ার্ড সহ)
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -117,7 +112,6 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* ধাপ ১: ইমেইল ইনপুট */}
           {step === 1 && (
             <form onSubmit={handleSendCode}>
               <div className="!mb-4">
@@ -146,7 +140,6 @@ export default function RegisterPage() {
             </form>
           )}
 
-          {/* ধাপ ২: কোড ইনপুট */}
           {step === 2 && (
             <form onSubmit={handleVerifyCode}>
               <div className="mb-4">
@@ -183,7 +176,6 @@ export default function RegisterPage() {
             </form>
           )}
 
-          {/* ধাপ ৩: ইউজার ইনফো ফর্ম */}
           {step === 3 && (
             <form onSubmit={handleRegister}>
               <div className="mb-4">
