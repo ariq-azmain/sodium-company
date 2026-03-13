@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
@@ -17,7 +17,7 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSendCode = async (e) => {
+  const handleSendCode = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -40,7 +40,7 @@ export default function RegisterPage() {
     }
   };
 
-  const handleVerifyCode = async (e) => {
+  const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -63,7 +63,7 @@ export default function RegisterPage() {
     }
   };
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError('');
