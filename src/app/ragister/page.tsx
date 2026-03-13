@@ -132,7 +132,7 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   type="email"
                   id="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e: React.FormEvent<HTMLFormElement>) => setEmail(e.target.value)}
                   required
                   disabled={loading}
                   className="w-full !px-3 !py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -159,8 +159,8 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   type="text"
                   id="code"
                   value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  maxLength="6"
+                  onChange={(e: React.FormEvent<HTMLFormElement>) => setCode(e.target.value)}
+                  maxLength={6}
                   required
                   disabled={loading}
                   className="w-full !px-3 !py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -197,7 +197,7 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
-                  minLength="3"
+                  minLength={3}
                   disabled={loading}
                   className="w-full !px-3 !py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Choose a username"
@@ -213,7 +213,7 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  minLength="6"
+                  minLength={6}
                   disabled={loading}
                   className="w-full !px-3 !py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Create a password"
