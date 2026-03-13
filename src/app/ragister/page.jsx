@@ -99,7 +99,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8
+    !mt-[300px] text-black">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="px-6 py-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
