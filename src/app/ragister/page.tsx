@@ -132,7 +132,7 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   type="email"
                   id="email"
                   value={email}
-                  onChange={(e: React.FormEvent<HTMLFormElement>) => setEmail(e.target.value)}
+                  onChange={(e: React.ChangeEventHandler<HTMLInputElement>) => setEmail(e.target.value)}
                   required
                   disabled={loading}
                   className="w-full !px-3 !py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -159,7 +159,7 @@ const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
                   type="text"
                   id="code"
                   value={code}
-                  onChange={(e: React.FormEvent<HTMLFormElement>) => setCode(e.target.value)}
+                  onChange={(e: React.ChangeEventHandler<HTMLInputElement>) => setCode(e.target.value)}
                   maxLength={6}
                   required
                   disabled={loading}
