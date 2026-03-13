@@ -18,27 +18,31 @@ export default function RegisterPage() {
   const [message, setMessage] = useState('');
 
   const handleSendCode = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
+  e.preventDefault();
+  setLoading(true);
+  setError('');
+  setMessage('');
 
-    try {
-      console.log('Sending verification code to:', email);
-      const response = await axios.post('/api/auth/send-verification', { email });
-      console.log('Send code response:', response.data);
-      if (response.data.success) {
-        setMessage('Verification code sent to your email.');
-        setStep(2);
-      }
-    } catch (err) {
-      console.error('Send code error:', err);
+  try {
+    console.log('Sending verification code to:', email);
+    const response = await axios.post('/api/auth/send-verification', { email });
+    console.log('Send code response:', response.data);
+    if (response.data.success) {
+      setMessage('Verification code sent to your email.');
+      setStep(2);
+    }
+  } catch (err) {
+    console.error('Send code error:', err);
+    if (axios.isAxiosError(err)) {
       console.error('Error response:', err.response?.data);
       setError(err.response?.data?.error || 'Something went wrong');
-    } finally {
-      setLoading(false);
+    } else {
+      setError('An unexpected error occurred');
     }
-  };
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleVerifyCode = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
