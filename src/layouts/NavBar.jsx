@@ -12,7 +12,7 @@ const NavBar = () => {
       <header>
          <nav>
             <Link href="#">
-               <div className="logo h-full bg-amber-300 overflow-y-hidden">
+               <div className="logo h-full overflow-y-hidden">
                   <img
                      src="/images/icons/logo.png"
                      alt="logo"
