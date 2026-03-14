@@ -41,6 +41,37 @@ export const navLinks = [
   }
 ]
 
+export const cardData = [
+  {
+    id: "about",
+    title: "About Us",
+    cards: [
+      { title: "Vision & Mission", description: "Our vision is to empower creators and innovators across IT, media, and gaming sectors." },
+      { title: "Core Values", description: "Innovation, collaboration, integrity, and community-first mindset." },
+      { title: "Timeline / Achievements", description: "Our journey includes successful events, competitions, and tech products over the years." }
+    ]
+  },
+  {
+    id: "departments",
+    title: "Departments",
+    cards: [
+      { title: "Media Department", description: "Creating content for YouTube, Facebook, Instagram, and more." },
+      { title: "IT Department", description: "Productive IT: Web, software, and apps for market. Competitive IT: AI, Robotics, and programming competitions." },
+      { title: "Gaming Department", description: "Organizing tournaments, competitions, and community gaming events." }
+    ]
+  },
+  {
+    id: "events",
+    title: "Events & Competitions",
+    cards: [
+      { title: "Upcoming", description: "See all scheduled events and competitions." },
+      { title: "Ongoing", description: "Active events you can join now." },
+      { title: "Past", description: "Highlights and results from previous events." }
+    ]
+  }
+];
+
+
 export const members = [
   {
     id: 1,

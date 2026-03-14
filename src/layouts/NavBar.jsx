@@ -7,14 +7,13 @@ const NavBar = () => {
   return (
     <header>
       <nav>
-        <Link href="/">
+        <Link href="#" className="bg-white h-full">
           <div className="logo">
+            <img src="/images/icons/logo.png" alt="logo" />
             <span>SODUM</span>
           </div>
         </Link>
-        <div className="sing-in-btn-container overflow-visible bottom-[13px]">
-          <Link href="/ragister">ragister</Link>
-        </div>
+
         <ul>
           {
             navLinks.map(({ name, href, id }) => (

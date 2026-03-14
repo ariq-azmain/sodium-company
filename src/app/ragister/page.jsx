@@ -75,7 +75,6 @@ export default function AuthPage() {
     }
   };
 
-  // রেজিস্ট্রেশন সম্পন্ন
   const handleRegister = async (e) => {
     e.preventDefault();
     if (regPassword.length < 6) {
@@ -107,7 +106,6 @@ export default function AuthPage() {
     }
   };
 
-  // লগইন
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoginLoading(true);
@@ -129,7 +127,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container !mt-[100px]">
       <div className="auth-box">
         <div className="auth-header">
           <h2>Welcome to SODIUM</h2>

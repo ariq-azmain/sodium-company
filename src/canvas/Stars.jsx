@@ -6,7 +6,7 @@ import * as random from "maath/random/dist/maath-random.esm";
 
 const Stars = ({color, rotX, rotY}) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(50), { radius: 1.2 }));
+  const [sphere] = useState(() => random.inSphere(new Float32Array(220), { radius: 1.2 }));
 
   useFrame((state, delta) => {
 //     const x = Math.random(10,11);

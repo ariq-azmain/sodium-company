@@ -4,7 +4,8 @@ import {
   Wark,
   Contact,
   Faq,
-  Members
+  Members,
+  Cards
 } from '@/section'
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
     <>
       <Header />
       <main>
+      <Cards/>
       {
         // <Summary />
         // <br/>
@@ -27,7 +29,13 @@ const Home = () => {
         // <br />
         // <Faq />
       }
+      <br/>
+      <br/>
+      <br/>
         <Faq />
+      <br/>
+      <br/>
+      <br/>
         <div className="w-[100vw] flex justify-center">
         <Contact />{
 //           

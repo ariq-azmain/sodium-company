@@ -4,6 +4,7 @@ import Wark from './Wark.jsx'
 import Contact from './Contact.jsx'
 import Faq from './Faq.jsx';
 import Members from './Members.jsx';
+import Cards from './Cards.jsx';
 
 export {
   Header,
@@ -11,5 +12,6 @@ export {
   Wark,
   Contact,
   Faq,
-  Members
+  Members,
+  Cards
 }
