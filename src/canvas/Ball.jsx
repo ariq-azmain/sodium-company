@@ -51,8 +51,7 @@ const BallCanvas = ({ icon, color }) => {
       frameloop='demand'
       dpr={[1, 2]}
       gl={{ preserveDrawingBuffer: true }}
-      className='!w-[180px] rounded-[30px] !border-2
-      !border-indigo-400 block bg-[#0000002e] bg-blur'
+      className='!w-[180px] rounded-[30px] !border-2 !border-indigo-400 block bg-[#0000002e] bg-blur'
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} />

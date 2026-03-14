@@ -16,6 +16,14 @@
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
+body, html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar, html::-webkit-scrollbar {
+  display: none;
+}
 canvas{
   background: #00000000;
 }
@@ -107,9 +115,8 @@ canvas{
     justify-content: center;
   }
   .cta-container span {
-    min-width: 330px;
-    min-height: 150px;
-    background: #fff;
+    min-width: 100%;
+    min-height: 200px;
     overflow: visible;
     display: flex;
     align-items: center;
@@ -133,8 +140,8 @@ canvas{
     transition: transform 0.25s, box-shadow 0.25s;
   }
   .cta-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 40px var(--blue), 0 0 60px var(--purple);
+    transform: translateY(-10px) scale(1.2);
+    box-shadow: 0 0 60px var(--blue), 0 0 80px var(--purple);
   }
   .cta-btn::before {
     content: '';

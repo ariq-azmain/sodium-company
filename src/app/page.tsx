@@ -12,18 +12,21 @@ const Home = () => {
     <>
       <Header />
       <main>
-        <Summary />
-        <br/>
-        <br/>
-        <br/>
-        <Members/>
-        <br/>
-        <br/>
-        <br/>
-        <Wark />
-        <br />
-        <br />
-        <br />
+      {
+        // <Summary />
+        // <br/>
+        // <br/>
+        // <br/>
+        // <Members/>
+        // <br/>
+        // <br/>
+        // <br/>
+        // <Wark />
+        // <br />
+        // <br />
+        // <br />
+        // <Faq />
+      }
         <Faq />
         <div className="w-[100vw] flex justify-center">
         <Contact />{
