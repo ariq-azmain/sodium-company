@@ -175,15 +175,17 @@ canvas{
     left: 6px;
     z-index: 10; 
 */
-    @apply text-[20px] sm:text-[25px] md:text-[30px] lg:text-[35px] xl:text-[37px] 2xl:text-[40px] z-[10] left-[6px] top-[5px] uppercase text-[transparent] font-black;
+    @apply text-[20px] sm:text-[25px] md:text-[30px] lg:text-[35px]
+    xl:text-[37px] 2xl:text-[40px] z-[100] left-[6px] top-[5px] uppercase
+    text-[transparent] font-black !ml-[10px];
   }
   .logo img {
     /*
 position: absolute;
     left: 18px;
     top: 0; 
+    @apply;
 */
-    @apply absolute left-[18px] top-0;
   }
   
   .sing-in-btn-container {
