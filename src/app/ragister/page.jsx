@@ -1,268 +1,427 @@
-// app/register/page.js
 'use client';
 
 import { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { Mail, AtSign, User, Lock, Eye, EyeOff, KeyRound, ArrowLeft } from 'lucide-react';
 
-// Axios কনফিগারেশন – কুকি পাঠানোর জন্য
+import '../../css/ragister.css'
+
 axios.defaults.withCredentials = true;
 
-export default function RegisterPage() {
-  const [step, setStep] = useState(1);
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+export default function AuthPage() {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState('login');
 
-  // ধাপ ১: ইমেইল পাঠিয়ে কোড রিকোয়েস্ট
+  // লগইন state
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [loginMessage, setLoginMessage] = useState({ text: '', type: '' });
+
+  // রেজিস্ট্রেশন মাল্টি-স্টেপ state
+  const [step, setStep] = useState(1); // 1: email, 2: code, 3: details
+  const [regEmail, setRegEmail] = useState('');
+  const [regCode, setRegCode] = useState('');
+  const [regUsername, setRegUsername] = useState('');
+  const [regPassword, setRegPassword] = useState('');
+  const [regConfirmPassword, setRegConfirmPassword] = useState('');
+  const [regFirstName, setRegFirstName] = useState('');
+  const [regLastName, setRegLastName] = useState('');
+  const [showRegPassword, setShowRegPassword] = useState(false);
+  const [showRegConfirmPassword, setShowRegConfirmPassword] = useState(false);
+  const [regLoading, setRegLoading] = useState(false);
+  const [regMessage, setRegMessage] = useState({ text: '', type: '' });
+
+  const showMessage = (setter, text, type) => {
+    setter({ text, type });
+    setTimeout(() => setter({ text: '', type: '' }), 5000);
+  };
+
+  // ইমেইল ভেরিফিকেশন কোড পাঠানো
   const handleSendCode = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
-
+    setRegLoading(true);
     try {
-      console.log('Sending verification code to:', email);
-      const response = await axios.post('/api/auth/send-verification', { email });
-      console.log('Send code response:', response.data);
-      if (response.data.success) {
-        setMessage('Verification code sent to your email.');
+      const res = await axios.post('/api/auth/send-verification', { email: regEmail });
+      if (res.data.success) {
+        showMessage(setRegMessage, 'Verification code sent to your email.', 'success');
         setStep(2);
       }
     } catch (err) {
-      console.error('Send code error:', err);
-      console.error('Error response:', err.response?.data);
-      setError(err.response?.data?.error || 'Something went wrong');
+      const msg = err.response?.data?.error || 'Failed to send code.';
+      showMessage(setRegMessage, msg, 'error');
     } finally {
-      setLoading(false);
+      setRegLoading(false);
     }
   };
 
-  // ধাপ ২: কোড ভেরিফাই করে verification_token কুকি সেট করবে
+  // কোড ভেরিফাই
   const handleVerifyCode = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
-
+    setRegLoading(true);
     try {
-      console.log('Verifying code for:', email);
-      const response = await axios.post('/api/auth/verify-code', { email, code });
-      console.log('Verify code response:', response.data);
-      if (response.data.success) {
-        setMessage('Email verified! Now complete your registration.');
+      const res = await axios.post('/api/auth/verify-code', { email: regEmail, code: regCode });
+      if (res.data.success) {
+        showMessage(setRegMessage, 'Email verified!', 'success');
         setStep(3);
       }
     } catch (err) {
-      console.error('Verify code error:', err);
-      console.error('Error response:', err.response?.data);
-      setError(err.response?.data?.error || 'Invalid code');
+      const msg = err.response?.data?.error || 'Invalid code.';
+      showMessage(setRegMessage, msg, 'error');
     } finally {
-      setLoading(false);
+      setRegLoading(false);
     }
   };
 
-  // ধাপ ৩: ইউজার তৈরি (পাসওয়ার্ড সহ)
+  // রেজিস্ট্রেশন সম্পন্ন
   const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setMessage('');
-
+    if (regPassword.length < 6) {
+      showMessage(setRegMessage, 'Password must be at least 6 characters.', 'error');
+      return;
+    }
+    if (regPassword !== regConfirmPassword) {
+      showMessage(setRegMessage, 'Passwords do not match.', 'error');
+      return;
+    }
+    setRegLoading(true);
     try {
-      console.log('Registering user:', { email, username });
-      const response = await axios.post('/api/users', {
-        email,
-        username,
-        password,
-        firstName,
-        lastName,
+      const res = await axios.post('/api/users', {
+        email: regEmail,
+        username: regUsername,
+        password: regPassword,
+        firstName: regFirstName,
+        lastName: regLastName,
       });
-      console.log('Register response:', response.data);
-      if (response.data.success) {
-        setMessage('Registration successful! You are now logged in.');
-        // ঐচ্ছিক: রিডাইরেক্ট করতে পারো
-        // router.push('/dashboard');
+      if (res.data.success) {
+        showMessage(setRegMessage, 'Registration successful! Redirecting...', 'success');
+        setTimeout(() => router.push('/role'), 1500);
       }
     } catch (err) {
-      console.error('Register error:', err);
-      console.error('Error response:', err.response?.data);
-      setError(err.response?.data?.error || 'Registration failed');
+      const msg = err.response?.data?.error || 'Registration failed.';
+      showMessage(setRegMessage, msg, 'error');
     } finally {
-      setLoading(false);
+      setRegLoading(false);
+    }
+  };
+
+  // লগইন
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    try {
+      const res = await axios.post('/api/auth/login', {
+        email: loginEmail,
+        password: loginPassword,
+      });
+      if (res.data.success) {
+        showMessage(setLoginMessage, 'Login successful! Redirecting...', 'success');
+        setTimeout(() => router.push('/role'), 1500);
+      }
+    } catch (err) {
+      const msg = err.response?.data?.error || 'Invalid email or password.';
+      showMessage(setLoginMessage, msg, 'error');
+    } finally {
+      setLoginLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8
-    !mt-[300px] text-black">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="px-6 py-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            SODIUM Registration
-          </h2>
+    <div className="auth-container">
+      <div className="auth-box">
+        <div className="auth-header">
+          <h2>Welcome to SODIUM</h2>
+          <p>Join our tech community and access exclusive content</p>
+        </div>
 
-          {error && (
-            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-              {error}
-            </div>
-          )}
-          {message && (
-            <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
-              {message}
-            </div>
-          )}
+        {/* ট্যাব - overflow-hidden যোগ করা হয়েছে */}
+        <div className="auth-tabs overflow-hidden">
+          <button
+            className={`tab-btn ${activeTab === 'login' ? 'active' : ''}`}
+            onClick={() => setActiveTab('login')}
+          >
+            Login
+          </button>
+          <button
+            className={`tab-btn ${activeTab === 'register' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('register'); setStep(1); }}
+          >
+            Register
+          </button>
+        </div>
 
-          {/* ধাপ ১: ইমেইল ইনপুট */}
-          {step === 1 && (
-            <form onSubmit={handleSendCode}>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
+        <div className="form-container">
+          {/* লগইন ফর্ম */}
+          <form className={`auth-form ${activeTab === 'login' ? 'active' : ''}`} onSubmit={handleLogin}>
+            {loginMessage.text && (
+              <div className={`message ${loginMessage.type}`}>{loginMessage.text}</div>
+            )}
+
+            <div className="form-group">
+              <label htmlFor="loginEmail">Email Address</label>
+              <div className="input-with-icon">
                 <input
                   type="email"
-                  id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  id="loginEmail"
+                  className="form-input"
                   placeholder="Enter your email"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  required
                 />
+                <Mail className="icon" size={18} />
               </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50"
-              >
-                {loading ? 'Sending...' : 'Send Verification Code'}
-              </button>
-            </form>
-          )}
+            </div>
 
-          {/* ধাপ ২: কোড ইনপুট */}
-          {step === 2 && (
-            <form onSubmit={handleVerifyCode}>
-              <div className="mb-4">
-                <label htmlFor="code" className="block text-sm font-medium text-gray-700 mb-2">
-                  Verification Code (6 digits)
-                </label>
+            <div className="form-group">
+              <label htmlFor="loginPassword">Password</label>
+              <div className="input-with-icon">
                 <input
-                  type="text"
-                  id="code"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value)}
-                  maxLength="6"
+                  type={showLoginPassword ? 'text' : 'password'}
+                  id="loginPassword"
+                  className="form-input"
+                  placeholder="Enter your password"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
                   required
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter 6-digit code"
                 />
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={() => setShowLoginPassword(!showLoginPassword)}
+                >
+                  {showLoginPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 mb-2"
-              >
-                {loading ? 'Verifying...' : 'Verify Code'}
-              </button>
-              <button
-                type="button"
-                onClick={() => setStep(1)}
-                disabled={loading}
-                className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 disabled:opacity-50"
-              >
-                Back
-              </button>
-            </form>
-          )}
+            </div>
 
-          {/* ধাপ ৩: ইউজার ইনফো ফর্ম */}
-          {step === 3 && (
-            <form onSubmit={handleRegister}>
-              <div className="mb-4">
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  minLength="3"
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Choose a username"
-                />
+            <button type="submit" className="form-submit" disabled={loginLoading}>
+              {loginLoading ? <span className="spinner"></span> : 'Login to SODIUM'}
+            </button>
+
+            <div className="auth-footer">
+              <p>
+                Don't have an account?{' '}
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setActiveTab('register');
+                    setStep(1);
+                  }}
+                >
+                  Sign up here
+                </a>
+              </p>
+            </div>
+          </form>
+
+          {/* রেজিস্ট্রেশন ফর্ম */}
+          <form className={`auth-form ${activeTab === 'register' ? 'active' : ''}`}>
+            {regMessage.text && (
+              <div className={`message ${regMessage.type}`}>{regMessage.text}</div>
+            )}
+
+            {/* স্টেপ ১: ইমেইল */}
+            {step === 1 && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="regEmail">Email Address</label>
+                  <div className="input-with-icon">
+                    <input
+                      type="email"
+                      id="regEmail"
+                      className="form-input"
+                      placeholder="Enter your email"
+                      value={regEmail}
+                      onChange={(e) => setRegEmail(e.target.value)}
+                      required
+                    />
+                    <Mail className="icon" size={18} />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="form-submit"
+                  onClick={handleSendCode}
+                  disabled={regLoading}
+                >
+                  {regLoading ? <span className="spinner"></span> : 'Send Verification Code'}
+                </button>
+              </>
+            )}
+
+            {/* স্টেপ ২: কোড */}
+            {step === 2 && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="regCode">Verification Code (6 digits)</label>
+                  <div className="input-with-icon">
+                    <input
+                      type="text"
+                      id="regCode"
+                      className="form-input"
+                      placeholder="Enter 6-digit code"
+                      maxLength="6"
+                      value={regCode}
+                      onChange={(e) => setRegCode(e.target.value)}
+                      required
+                    />
+                    <KeyRound className="icon" size={18} />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="form-submit"
+                  onClick={handleVerifyCode}
+                  disabled={regLoading}
+                >
+                  {regLoading ? <span className="spinner"></span> : 'Verify Code'}
+                </button>
+                <button
+                  type="button"
+                  className="form-submit back-btn"
+                  onClick={() => setStep(1)}
+                  disabled={regLoading}
+                >
+                  <ArrowLeft size={18} style={{ marginRight: 8 }} />
+                  Back
+                </button>
+              </>
+            )}
+
+            {/* স্টেপ ৩: ইউজার ইনফো */}
+            {step === 3 && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="regUsername">Username</label>
+                  <div className="input-with-icon">
+                    <input
+                      type="text"
+                      id="regUsername"
+                      className="form-input"
+                      placeholder="Choose a username"
+                      value={regUsername}
+                      onChange={(e) => setRegUsername(e.target.value)}
+                      required
+                    />
+                    <AtSign className="icon" size={18} />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="regFirstName">First Name (optional)</label>
+                  <div className="input-with-icon">
+                    <input
+                      type="text"
+                      id="regFirstName"
+                      className="form-input"
+                      placeholder="First name"
+                      value={regFirstName}
+                      onChange={(e) => setRegFirstName(e.target.value)}
+                    />
+                    <User className="icon" size={18} />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="regLastName">Last Name (optional)</label>
+                  <div className="input-with-icon">
+                    <input
+                      type="text"
+                      id="regLastName"
+                      className="form-input"
+                      placeholder="Last name"
+                      value={regLastName}
+                      onChange={(e) => setRegLastName(e.target.value)}
+                    />
+                    <User className="icon" size={18} />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="regPassword">Password</label>
+                  <div className="input-with-icon">
+                    <input
+                      type={showRegPassword ? 'text' : 'password'}
+                      id="regPassword"
+                      className="form-input"
+                      placeholder="Create a password (min. 6 characters)"
+                      value={regPassword}
+                      onChange={(e) => setRegPassword(e.target.value)}
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="toggle-password"
+                      onClick={() => setShowRegPassword(!showRegPassword)}
+                    >
+                      {showRegPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="regConfirmPassword">Confirm Password</label>
+                  <div className="input-with-icon">
+                    <input
+                      type={showRegConfirmPassword ? 'text' : 'password'}
+                      id="regConfirmPassword"
+                      className="form-input"
+                      placeholder="Confirm your password"
+                      value={regConfirmPassword}
+                      onChange={(e) => setRegConfirmPassword(e.target.value)}
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="toggle-password"
+                      onClick={() => setShowRegConfirmPassword(!showRegConfirmPassword)}
+                    >
+                      {showRegConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="form-submit"
+                  onClick={handleRegister}
+                  disabled={regLoading}
+                >
+                  {regLoading ? <span className="spinner"></span> : 'Create Account'}
+                </button>
+                <button
+                  type="button"
+                  className="form-submit back-btn"
+                  onClick={() => setStep(2)}
+                  disabled={regLoading}
+                >
+                  <ArrowLeft size={18} style={{ marginRight: 8 }} />
+                  Back
+                </button>
+              </>
+            )}
+
+            {step === 1 && (
+              <div className="auth-footer">
+                <p>
+                  Already have an account?{' '}
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActiveTab('login');
+                    }}
+                  >
+                    Login here
+                  </a>
+                </p>
               </div>
-              <div className="mb-4">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  minLength="6"
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Create a password"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                  First Name (optional)
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="First name"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Last Name (optional)
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  disabled={loading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Last name"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 mb-2"
-              >
-                {loading ? 'Registering...' : 'Register'}
-              </button>
-              <button
-                type="button"
-                onClick={() => setStep(2)}
-                disabled={loading}
-                className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 disabled:opacity-50"
-              >
-                Back
-              </button>
-            </form>
-          )}
+            )}
+          </form>
         </div>
       </div>
     </div>

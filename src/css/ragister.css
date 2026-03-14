@@ -1,0 +1,323 @@
+@import 'tailwindcss';
+
+/* Original CSS styles (commented for reference) */
+/* .auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 120px 20px 60px;
+} */
+.auth-container {
+  @apply flex justify-center items-center flex-1 px-5 py-[120px] sm:py-20;
+}
+
+/* .auth-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+  position: relative;
+  overflow: hidden;
+} */
+.auth-box {
+  @apply w-full max-w-md p-10 bg-white/5 backdrop-blur-lg border border-white/15 rounded-2xl shadow-[0_0_40px_rgba(168,85,247,0.2)] relative overflow-hidden;
+}
+
+.auth-box::before {
+  content: '';
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #a855f7, #6366f1); */
+  @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500;
+}
+
+/* .auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+} */
+.auth-header {
+  @apply text-center mb-8;
+}
+
+/* .auth-header h2 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 8px;
+} */
+.auth-header h2 {
+  @apply text-3xl text-white mb-2;
+}
+
+/* .auth-header p {
+  color: #ccc;
+  font-size: 14px;
+} */
+.auth-header p {
+  @apply text-sm text-gray-300;
+}
+
+/* .admin-note {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #fbbf24;
+} */
+.admin-note {
+  @apply bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2 mt-2 text-xs text-yellow-400;
+}
+
+/* .auth-tabs {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+} */
+.auth-tabs {
+  @apply flex mb-8 border-b border-white/10;
+}
+
+/* .tab-btn {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+} */
+.tab-btn {
+  @apply flex-1 py-3 bg-transparent border-none text-gray-400 font-semibold cursor-pointer transition-colors duration-300 relative;
+}
+
+/* .tab-btn.active {
+  color: #fff;
+} */
+.tab-btn.active {
+  @apply text-white;
+}
+
+/* .tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+} */
+.tab-btn.active::after {
+  content: '';
+  @apply absolute bottom-[-1px] left-0 w-full h-0.5 bg-gradient-to-r from-purple-500 to-blue-500;
+}
+
+/* .form-container {
+  position: relative;
+} */
+.form-container {
+  @apply relative;
+}
+
+/* .auth-form {
+  display: none;
+  animation: fadeIn 0.5s ease;
+} */
+.auth-form {
+  @apply hidden animate-[fadeIn_0.3s_ease];
+}
+
+/* .auth-form.active {
+  display: block;
+} */
+.auth-form.active {
+  @apply block;
+}
+
+/* .form-group {
+  margin-bottom: 20px;
+  position: relative;
+} */
+.form-group {
+  @apply mb-5 relative;
+}
+
+/* .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ccc;
+} */
+.form-group label {
+  @apply block mb-2 text-sm text-gray-300;
+}
+
+/* .form-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.3s;
+} */
+.form-input {
+  @apply w-full p-3.5 px-4 bg-white/5 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all;
+}
+
+/* .input-with-icon {
+  position: relative;
+} */
+.input-with-icon {
+  @apply relative;
+}
+
+/* .input-with-icon i {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+} */
+.input-with-icon i {
+  @apply absolute right-4 top-1/2 -translate-y-1/2 text-white/50;
+}
+
+/* .toggle-password {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+} */
+.toggle-password {
+  @apply absolute right-4 top-1/2 -translate-y-1/2 bg-transparent border-none text-white/50 cursor-pointer;
+}
+
+/* .form-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+} */
+.form-submit {
+  @apply w-full p-3.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold text-base rounded-xl cursor-pointer transition-all mt-2 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/30 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* .form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+} */
+/* (merged into .form-submit) */
+
+/* .auth-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  font-size: 14px;
+} */
+.auth-footer {
+  @apply text-center mt-6 pt-5 border-t border-white/10 text-gray-400 text-sm;
+}
+
+/* .auth-footer a {
+  color: #6366f1;
+  text-decoration: none;
+} */
+.auth-footer a {
+  @apply text-blue-400 no-underline;
+}
+
+/* .message {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+} */
+.message {
+  @apply p-3 rounded-xl mb-5 hidden animate-[fadeIn_0.3s_ease];
+}
+
+/* .message.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: block;
+} */
+.message.error {
+  @apply bg-red-500/10 text-red-400 border border-red-500/20 block;
+}
+
+/* .message.success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  display: block;
+} */
+.message.success {
+  @apply bg-green-500/10 text-green-400 border border-green-500/20 block;
+}
+
+/* .message.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  display: block;
+} */
+.message.info {
+  @apply bg-blue-500/10 text-blue-400 border border-blue-500/20 block;
+}
+
+/* .spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, .3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+} */
+.spinner {
+  @apply inline-block w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin mr-2;
+}
+
+/* @keyframes spin {
+  to { transform: rotate(360deg); }
+} */
+/* (Tailwind has animate-spin, no need for keyframe) */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
