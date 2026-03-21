@@ -166,27 +166,11 @@ canvas{
     background: -o-linear-gradient(bottom left, #7600fa, #ae00fa, #d200fa, #fa00da, #fa007f, #fa0000);
     background: linear-gradient(to top right, #7600fa, #ae00fa, #d200fa, #fa00da, #fa007f, #fa0000);
     background-clip: text;
-    /*
-    font-weight: 900;
-    position: fixed;
-    color: transparent;
-    text-transform: uppercase;
-    top: 35px;
-    left: 6px;
-    z-index: 10; 
-*/
     @apply text-[20px] sm:text-[25px] md:text-[30px] lg:text-[35px]
     xl:text-[37px] 2xl:text-[40px] z-[100] left-[6px] top-[5px] uppercase
     text-[transparent] font-black !ml-[10px];
   }
-  .logo img {
-    /*
-position: absolute;
-    left: 18px;
-    top: 0; 
-    @apply;
-*/
-  }
+  .logo img {}
   
   .sing-in-btn-container {
     position: fixed;
@@ -369,22 +353,10 @@ position: absolute;
     scroll-behavior: smooth;
   }
   body {
-    /*     background: var(--bg-dark);
-    color: #fff;
-    overflow-x: hidden; */
     @apply bg-[#131313] text-white overflow-x-hidden pb-[200vh];
   }
   
   nav {
-    /*
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    z-index: 5; 
-*/
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8px);
     background: rgba(0, 0, 0, 0.2);
@@ -392,95 +364,44 @@ position: absolute;
   }
   
   nav ul {
-    /*// TODO: h-[100px] z-[5] md:h-[150px] lg:h-[190px] xl:h-[230px] 2xl:h-[300px] 
-position: absolute;
-right: 5px;
-top: 10px;
-min-width: 68vw;
-max-height: 100px;
-display: flex;
-justify-content: space-x-between;
-align-items: center;
-*/
     @apply absolute right-[5px] top-[0px] min-w-[68vw] max-h-[100px] flex justify-between items-center h-[100px] z-[5] md:h-[130px] lg:h-[150px] xl:h-[160px] 2xl:h-[170px];
   }
   
+  /* ── FIX: font-size কমানো হয়েছে, আগে ছিল 18–21px যা অনেক বড় ছিল ── */
   nav ul li {
-    @apply inline-block sm:text-[19px] md:text-[21px] text-[18px] h-fit;
+    @apply inline-block text-[13px] sm:text-[14px] md:text-[14px] lg:text-[15px] xl:text-[15px] h-fit !overflow-visible;
   }
   
+  /* ── NavLink base style ── */
   nav ul li .NavLink {
-    /*
-margin: 5px 6.8px;
-    padding: 5px 10px; 
-    position: relative;
-    font-weight: bolder;
-*/
-    @apply relative font-black;
+    @apply relative font-semibold tracking-wide text-white/80
+    transition-colors duration-200;
   }
-  
-/*   nav ul .NavLink::after,  */
-  nav ul li .NavLink.active::after{
-    content: '';
-    /*
-position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-*/
-    background: -webkit-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    background: -moz-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    background: -o-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    background: linear-gradient(to left, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    transition: .3s;
-    animation: prg 0.5s ease-in-out forwards;
-    @apply absolute left-0 w-0 h-[2px] bottom-[-4px]
-  }
-  /* nav ul li .NavLink:hover::after,
-  nav ul li .NavLink:focus::after,
-  nav ul li .NavLink:active::after{
-    @apply w-full;
-  }
-  nav ul li .NavLink:focus::after {
-    @apply w-full;
-  }
-  
-  nav ul li .NavLink:active::after {
-    @apply w-full;
-  }
-  
-  nav ul li .NavLink.active::after {
+
+  /* ── NavLink hover/active — আন্ডারলাইন pseudo element ── */
+  nav ul li .NavLink::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -4px;
-    width: 100%;
+    bottom: -5px;
+    width: 0;
     height: 2px;
-    background: -webkit-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    background: -moz-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    background: -o-linear-gradient(right, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
     background: linear-gradient(to left, #6d02fffc, #9102fffc, #c202fffc, #ff02f9fc, #ff0289fc);
-    transition: 0.3s;
+    transition: width 0.3s ease;
   }
-*/
 
-
-  /* Sections */
-/*   section {
-    padding: 100px 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    @apply mx-0 my-auto max-w-[1200px] px-[100px] py-[60px];
+  /* hover করলে underline বাম থেকে ডানে grow করবে */
+  nav ul li .NavLink:hover::after,
+  nav ul li .NavLink.active::after {
+    width: 100%;
   }
-  
-  section h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    color: var(--purple); 
-    @apply text-[purple] mb-[30px] text-[36px];
-  } */
-    button {
+
+  /* hover করলে text সামান্য উজ্জ্বল হবে */
+  nav ul li .NavLink:hover {
+    @apply text-white;
+  }
+
+  button {
     @apply bg-none tracking-[-0.03em];
   }
   
@@ -569,31 +490,4 @@ position: absolute;
   .bg-blur{
     backdrop-filter: blur(4px);
   }
-/*   .inner-before {
-    @apply before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-500 before:content-[''];
-  }
-  .inner-before::before{
-      background: -webkit-linear-gradient(#1b275a, #0e1434);
-      background: -moz-linear-gradient(#1b275a, #0e1434);
-      background: -o-linear-gradient(#1b275a, #0e1434);
-      background: linear-gradient(#1b275a, #0e1434);
-    }
-  .glow-before {
-    @apply before:absolute before:left-2/5 before:top-0 before:z-4 before:h-0.5 before:w-3/5 before:opacity-0 before:transition-all before:duration-500 before:content-[''] group-hover:before:left-4 group-hover:before:opacity-40;
-  }
-  .glow-before::before{
-       background: -webkit-linear-gradient(left, transparent, #2ef2ff, transparent);
-       background: -moz-linear-gradient(left, transparent, #2ef2ff, transparent);
-       background: -o-linear-gradient(left, transparent, #2ef2ff, transparent);
-       background: linear-gradient(to right, transparent, #2ef2ff, transparent);
-    }
-  .glow-after {
-    @apply after:absolute after:bottom-0 after:left-4 after:z-4 after:h-0.5 after:w-7/20 after:opacity-0 after:transition-all after:duration-500 after:content-[''] group-hover:after:left-3/5 group-hover:after:opacity-40;
-  }
-  .glow-after::after{
-      background: -webkit-linear-gradient(left, transparent, #2ef2ff, transparent);
-      background: -moz-linear-gradient(left, transparent, #2ef2ff, transparent);
-      background: -o-linear-gradient(left, transparent, #2ef2ff, transparent);
-      background: linear-gradient(to right, transparent, #2ef2ff, transparent);
-    } */
 }
