@@ -18,9 +18,9 @@ const NavBar = () => {
             <img
               src="/images/icons/logo.png"
               alt="logo"
-              className="h-[65px] w-[65px] md:h-[80px] md:w-[80px] !ml-[30px]"
+              className="h-[65px] w-[65px] md:h-[80px] md:w-[80px] !ml-[13px]"
             />
-            <span className="!ml-2 font-bold">SODUM</span>
+            <span className="!ml-1.5 font-bold">SODUM</span>
           </div>
         </Link>
 
