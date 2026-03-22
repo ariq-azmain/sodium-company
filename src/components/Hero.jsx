@@ -83,7 +83,8 @@ const Hero = () => {
     ><div className="hero-title opacity-100">Building the <span>Future</span><br />Through
     Innovation</div></h1>
     <p
-     className='!opacity-100  overflow-hidden'
+     className='!opacity-100  overflow-hidden selection:bg-[#53f6ff]
+     selection:text-[#02031b]'
     ><div className="overflow-hidden hero-subtitle">
     We manage IT, Media, and Gaming departments while empowering members through competitions, content creation, and
       tech development.

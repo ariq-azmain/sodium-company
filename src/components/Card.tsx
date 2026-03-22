@@ -28,11 +28,13 @@ const Card = ({ title, description }: CardProps) => {
         card
       "
     >
-      <h3 className="text-white font-semibold text-lg leading-snug tracking-tight">
+      <h3 className="text-white font-semibold text-lg leading-snug
+      tracking-tight selection:text-auto selection:bg-[#62626200]">
         {title}
       </h3>
 
-      <p className="text-[#ddd] text-sm font-light leading-relaxed">
+      <p className="text-[#ddd] text-sm font-light leading-relaxed
+      selection:text-[#b3fbff] selection:bg-[#626262bf] selection:backdrop-blur">
         {description}
       </p>
     </div>
