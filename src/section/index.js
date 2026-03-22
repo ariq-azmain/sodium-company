@@ -1,4 +1,4 @@
-import Header from './Header.jsx'
+import Header from './Header.tsx'
 import Summary from './Summary.jsx'
 import Wark from './Wark.jsx'
 import Contact from './Contact.jsx'

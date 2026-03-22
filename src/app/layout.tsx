@@ -8,7 +8,7 @@ import "./globals.css"
 import "@/css/animations.css"
 import NavBar from '@/layouts/NavBar.jsx'
 import Footer from '@/layouts/Footer.jsx'
-import BG from '@/layouts/BG.jsx'
+import BG from '@/layouts/BG.tsx'
 
 export const metadata: Metadata = {
   title: "SODIUM • Morden Tech Hub",
