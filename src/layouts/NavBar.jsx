@@ -19,7 +19,7 @@ const NavBar = () => {
               alt="SODIUM logo"
               className="h-[65px] w-[65px] md:h-[80px] md:w-[80px]"
             />
-            <span className="font-bold">SODUM</span>
+            <span className="font-bold">SODIUM</span>
           </div>
         </Link>
 
