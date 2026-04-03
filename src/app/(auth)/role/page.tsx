@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import {
    FaUsers,
    FaCheckCircle,
@@ -22,70 +23,7 @@ const page = () => {
             </div>
 
             <div className="choice-grid">
-               {/*
-              <div className="choice-card member-card" id="memberOption">
-                  <div className="card-icon">
-                     <FaUsers className="user" />
-                  </div>
-                  <h2>Continue as Member</h2>
-                  <p>
-                     Access your member dashboard to view events, connect with
-                     the community, and explore SODIUM resources.
-                  </p>
-                  <div className="feature-list">
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>View upcoming events</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Connect with community</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Access resources</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Track achievements</span>
-                     </div>
-                  </div>
-                  <div className="card-badge">
-                     <FaArrowRight className="inline"/> Go to Member Dashboard
-                  </div>
-               </div>
-
-               <div className="choice-card role-card" id="roleOption">
-                  <div className="card-icon">
-                     <FaUserTag/>
-                  </div>
-                  <h2>Apply for a Role</h2>
-                  <p>
-                     Choose a specialized role that matches your skills and
-                     interests. Get access to department-specific features.
-                  </p>
-                  <div className="feature-list">
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>8 specialized roles available</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Department-specific access</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Leadership opportunities</span>
-                     </div>
-                     <div className="feature-item">
-                        <FaCheckCircle className="check"/>
-                        <span>Specialized projects</span>
-                     </div>
-                  </div>
-                  <div className="card-badge">
-                      <FaArrowRight className="inline" /> Apply for a Role
-                  </div>
-               </div> */}
+              <Link href="/member-dashboard">
                <ChoiceCard
                   role={false}
                   title="Continue as Member"
@@ -94,6 +32,9 @@ const page = () => {
                   button="Go to Member Dashboard"
                   features={memberFeatures}
                />
+              </Link>
+              <Link href="/application">
+                
                <ChoiceCard
                   role={true}
                   title="Apply for a Role"
@@ -102,6 +43,7 @@ const page = () => {
                   button="Apply for a Role"
                   features={roleFeatures}
                />
+              </Link>
             </div>
          </div>
       </div>

@@ -24,7 +24,6 @@ export async function POST(request) {
     const { email } = validation.data;
     await dbConnect();
 
-    // ইউজার আগে থেকে রেজিস্টার্ড কিনা চেক (ঐচ্ছিক)
     const User = (await import('@/app/lib/models/User')).default;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
