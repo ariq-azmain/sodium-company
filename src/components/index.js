@@ -1,4 +1,3 @@
-import Alert from "./Alert.jsx";
 import Button from "./Button.jsx";
 import Card from "./Card.tsx";
 import CanvasLoader from "./CanvasLoader.tsx";
@@ -20,7 +19,6 @@ export {
    CanvasLoader,
    Marker,
    FaqItem,
-   Alert,
    Lights,
    Logo,
    ChoiceCard,
