@@ -1,6 +1,6 @@
 "use client";
 
-export interface CardProps {
+interface CardProps {
   title: string;
   description: string;
 }

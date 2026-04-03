@@ -20,18 +20,19 @@ import { cardsData } from "@/constant";
  *
  * We also use `isolation: isolate` + `z-index` on the grid cell so the
  * hovered card's glow renders above sibling cards without stacking issues.
+ * cubic-bezier(.03,.98,.52,.99)
  */
 
 const TILT_OPTIONS = {
   reverse: false,
   max: 50,
-  perspective: 1200,
-  scale: 1,        // NO scale — prevents layout shift
-  speed: 450,
+  perspective: 540,
+  scale: 1.09,        // NO scale — prevents layout shift
+  speed: 250,
   transition: true,
   axis: null,
   reset: true,
-  easing: "cubic-bezier(.03,.98,.52,.99)",
+  easing: "linear",
 };
 
 // Force overflow visible — overrides `* { overflow-x: hidden }` in globals.css

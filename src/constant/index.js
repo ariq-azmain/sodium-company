@@ -26,25 +26,20 @@ import {
 export const navLinks = [
   {
     name: "About",
-    href: "#about",
+    href: "/#about",
     id: 1,
   },
   {
     name: "Achievement",
-    href: "#achievement",
+    href: "/#achievement",
     id: 2,
   },
   {
     name: "Events",
-    href: "#events",
+    href: "/#events",
     id: 3,
   },
 ];
-
-// ── Cards Section Data ────────────────────────────────────────────────────────
-// Source: original index.html — About, Departments, Events & Competitions sections
-// Structure: array of sections, each section has a title + cards array
-// Cards.tsx maps over this and renders a Card component per item.
 
 export const cardsData = [
   {
@@ -108,6 +103,44 @@ export const cardsData = [
     ],
   },
 ];
+
+export const memberFeatures = [
+  {
+    id: 1,
+    text: 'View upcoming events'
+  },
+  {
+    id: 2,
+    text: 'Connect with community'
+  },
+  {
+    id: 3,
+    text: 'Access resources'
+  },
+  {
+    id: 4,
+    text: 'Track achievements'
+  }
+]
+
+export const roleFeatures = [
+  {
+    id: 1,
+    text: '8 specialized roles available'
+  },
+  {
+    id: 2,
+    text: 'Department-specific access'
+  },
+  {
+    id: 3,
+    text: 'Leadership opportunities'
+  },
+  {
+    id: 4,
+    text: 'Specialized projects'
+  }
+]
 
 export const members = [
   {
@@ -308,7 +341,7 @@ export const socialLinks = [
   },
   {
     id: 4,
-    name: "Twitter",
+    name: "twitter",
     icon: "/images/socialLinks/twit.svg",
     link: "https://twitter.com",
   },

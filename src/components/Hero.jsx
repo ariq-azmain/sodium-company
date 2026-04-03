@@ -80,21 +80,22 @@ const Hero = () => {
     <div className="eyebrow">SODIUM • Modern Tech Community Hub</div>
     <h1
       className="overflow-hidden"
-    ><div className="hero-title opacity-100">Building the <span>Future</span><br />Through
+    ><div className="hero-title opacity-100 selection:!bg-[#ffffff00]
+    selection:!text-[#15e4ff]">Building the <span>Future</span><br />Through
     Innovation</div></h1>
     <p
-     className='!opacity-100  overflow-hidden selection:bg-[#53f6ff]
-     selection:text-[#02031b]'
-    ><div className="overflow-hidden hero-subtitle">
+     className='!opacity-100  overflow-hidden selection:!bg-[#53f6ff]
+     selection:!text-[#02031b]'
+    ><span className="overflow-hidden hero-subtitle">
     We manage IT, Media, and Gaming departments while empowering members through competitions, content creation, and
       tech development.
-    </div>
+    </span>
       </p>
       <div className="flex justify-left items-start h-[180px]
-      w-[350px] overflow-hidden">
+      w-[350px] !overflow-visible">
     <CTA 
     text="Become a part of our community"
-    href="/ragister"/>
+    href="/authentication"/>
       </div>
     <img src="images/hero.png" className="hero-logo" alt="Floating SODIUM logo"/>
     </div>
