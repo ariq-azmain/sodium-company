@@ -39,7 +39,6 @@
     "tailwind-merge": "^2.6.0",
     "three": "^0.172.0",
     "three-globe": "^2.45.0",
-    "vercel": "^50.28.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
