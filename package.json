@@ -15,7 +15,9 @@
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
+    "@tailwindcss/postcss": "^4.2.2",
     "axios": "^1.7.9",
+    "babel-plugin-react-compiler": "^1.0.0",
     "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
@@ -27,6 +29,7 @@
     "mongoose": "^9.2.4",
     "next": "^16.1.6",
     "nodemailer": "^8.0.2",
+    "postcss": "^8.5.8",
     "react": "19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "19.0.0",
@@ -36,21 +39,18 @@
     "react-slidedown": "^2.4.7",
     "react-tilt": "^1.0.2",
     "react-vertical-timeline-component": "^4.0.0",
+    "tailwindcss": "^4.0.0",
     "tailwind-merge": "^2.6.0",
     "three": "^0.172.0",
     "three-globe": "^2.45.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.2.2",
     "@types/bcrypt": "^6.0.0",
     "@types/node": "^20.17.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.172.0",
-    "babel-plugin-react-compiler": "^1.0.0",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0"
   }
 }
