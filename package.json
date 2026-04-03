@@ -16,6 +16,11 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^20.17.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.172.0",
+    "typescript": "^5.7.0",
     "axios": "^1.7.9",
     "babel-plugin-react-compiler": "^1.0.0",
     "bcrypt": "^6.0.0",
@@ -47,10 +52,5 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
-    "@types/node": "^20.17.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@types/three": "^0.172.0",
-    "typescript": "^5.7.0"
   }
 }
