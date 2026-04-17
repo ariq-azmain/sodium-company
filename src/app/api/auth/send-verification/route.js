@@ -6,7 +6,7 @@ import dbConnect from '@/lib/dbConnect';
 import VerificationCode from '@/lib/models/VerificationCode';
 import { generateVerificationCode } from '@/lib/auth/generateCode';
 import { sendVerificationEmail } from '@/lib/email/sendEmail';
-import User from '@/app/lib/models/User';
+import User from '@/lib/models/User';
 
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
