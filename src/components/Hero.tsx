@@ -7,7 +7,7 @@ import { SplitText } from "gsap/all";
 import "@/css/hero.css";
 import { CTA } from "@/components";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { useAlert } from "@/store/alert";
+// import { useAlert } from "@/store/alert";
 
 const Hero = () => {
    useGSAP(() => {
@@ -40,7 +40,7 @@ const Hero = () => {
          delay: 1
       });
    }, []);
-   const { show, hide } = useAlert();
+  // const { show, hide } = useAlert();
    const { user, loading, error, isLoggedIn } = useCurrentUser();
    return (
       <section id="home" className="hero overflow-hidden relative">
