@@ -18,19 +18,6 @@ const Inner = () => (
             <span className="absolute left-[1px]">
                <Marker/>
             </span>
-
-            {icon && (
-               <Image
-                  fill
-                  src={icon}
-                  alt="(⁠•⁠‿⁠•⁠)"
-                  className="size-10 mr-5 object-contain z-10"
-               />
-            )}
-
-            <span className="relative z-2 font-poppins base-bold text-[25px] uppercase right-0">
-               {children}
-            </span>
          </span>
 
          <span className="glow-before glow-after" />
