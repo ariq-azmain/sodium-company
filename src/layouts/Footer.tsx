@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { socialLinks, navLinks } from "@/constant";
+import { socialLinks, navLinks } from "@/constants";
 
 const Footer = () => {
    const copyEmail = () => {
@@ -158,7 +158,7 @@ const Footer = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 !pt-8">
-               <p className="text-white/30 text-xs tracking-wide">
+               <p suppressHydrationWarning className="text-white/30 text-xs tracking-wide">
                   © {new Date().getFullYear()}{" "}
                   <span className="sodium">SODIUM</span>. All rights reserved.
                </p>

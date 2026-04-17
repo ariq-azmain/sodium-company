@@ -5,7 +5,7 @@ import { OrbitControls, Preload } from "@react-three/drei";
 
 import {CanvasLoader} from "@/components";
 
-import Earth from '@/models/Earth.jsx';
+import Earth from './models/Earth.jsx';
 
 const EarthCanvas = () => {
   return (

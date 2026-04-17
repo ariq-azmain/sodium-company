@@ -1,32 +1,24 @@
-import type { Metadata } from "next"
-import React from 'react'
-import gsap from 'gsap';
-import { ScrollTrigger, SplitText } from "gsap/all";
+import type { Metadata } from "next";
+import React from "react";
 
-
-import "../globals.css"
-import "@/css/animations.css"
-import {Footer, BG, RegisterHeader} from '@/layouts'
+import "../globals.css";
+import "@/css/animations.css";
+import { Footer, BG, RegisterHeader } from "@/layouts";
 
 export const metadata: Metadata = {
-  title: "authentication"
+   title: "authentication"
 };
-
-gsap.registerPlugin(ScrollTrigger, SplitText);
-
 export default function RootLayout({
-  children,
+   children
 }: Readonly<{
-  children: React.ReactNode;
+   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-      <RegisterHeader/>
-        <BG />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
+   return (
+      <>
+         <RegisterHeader />
+         <BG />
+         {children}
+         <Footer />
+      </>
+   );
 }

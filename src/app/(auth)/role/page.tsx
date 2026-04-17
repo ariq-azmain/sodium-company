@@ -6,8 +6,8 @@ import {
    FaUserTag
 } from "react-icons/fa";
 
-import { ChoiceCard } from "@/components";
-import { memberFeatures, roleFeatures } from "@/constant";
+import { memberFeatures, roleFeatures } from "@/constants";
+import { ChoiceCard } from '@/components'
 import "@/css/role.css";
 
 const page = () => {

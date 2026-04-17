@@ -3,17 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-
-// ─── User type ────────────────────────────────────────────────────────────────
-export type User = {
-  _id:       string;
-  email:     string;
-  username:  string;
-  firstName: string;
-  lastName:  string;
-  status:    'pending' | 'accept' | 'reject';
-  createdAt: string;
-};
+import type {User} from '@/types/user.ts'
 
 // ─── Return type ──────────────────────────────────────────────────────────────
 type UseGetAllUsersReturn = {
@@ -23,7 +13,6 @@ type UseGetAllUsersReturn = {
   refetch: () => void;    // manually আবার fetch করতে চাইলে
 };
 
-// ─── Hook ────────────────────────────────────────────────────────────────────
 export default function useGetAllUsers(): UseGetAllUsersReturn {
   const [users,   setUsers]   = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

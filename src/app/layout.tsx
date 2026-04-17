@@ -1,22 +1,25 @@
-import type { Metadata } from "next"
-import React from 'react'
-import gsap from 'gsap';
-import { ScrollTrigger, SplitText } from "gsap/all";
+import type { Metadata } from "next";
+import React from "react";
 
-
-import "./globals.css"
-import "@/css/animations.css"
+import { Alert } from "@/components";
+import "./globals.css";
+import "@/css/animations.css";
 
 export const metadata: Metadata = {
-  title: "SODIUM • %s"
+   title: "SODIUM • %s"
 };
-
-gsap.registerPlugin(ScrollTrigger, SplitText);
-
-export default function RootLayout({
-  children,
+export default async function RootLayout({
+   children
 }: Readonly<{
-  children: React.ReactNode;
+   children: React.ReactNode;
 }>) {
-  return children;
+   return (
+      <html lang="en">
+         <body>
+            {" "}
+            <Alert />
+            {children}
+         </body>
+      </html>
+   );
 }

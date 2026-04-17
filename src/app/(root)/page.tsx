@@ -1,6 +1,7 @@
 import { Header, Summary, Wark, Contact, Faq, Members, Cards } from "@/section";
 
-const Home = () => {
+const Home = async () => {
+
    return (
       <>
          <Header />

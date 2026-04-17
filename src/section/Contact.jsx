@@ -2,10 +2,9 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import clsx from 'clsx';
 
 import { EarthCanvas, StarsCanvas } from "@/canvas";
-import { slideIn } from "@/utils/motion";
+import { slideIn } from "@/utility/motion";
 import {Button} from '@/components';
 
 

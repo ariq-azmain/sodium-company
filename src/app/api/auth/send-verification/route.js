@@ -1,10 +1,12 @@
 // src/app/api/auth/send-verification/route.js
 import { NextResponse } from 'next/server';
-import dbConnect from '@/app/lib/dbConnect';
-import VerificationCode from '@/app/lib/models/VerificationCode';
-import { generateVerificationCode } from '@/app/lib/auth/generateCode';
-import { sendVerificationEmail } from '@/app/lib/email/sendEmail';
 import { z } from 'zod';
+
+import dbConnect from '@/lib/dbConnect';
+import VerificationCode from '@/lib/models/VerificationCode';
+import { generateVerificationCode } from '@/lib/auth/generateCode';
+import { sendVerificationEmail } from '@/lib/email/sendEmail';
+import User from '@/app/lib/models/User';
 
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -24,7 +26,7 @@ export async function POST(request) {
     const { email } = validation.data;
     await dbConnect();
 
-    const User = (await import('@/app/lib/models/User')).default;
+    // const User = (await import('@/lib/models/User')).default;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return NextResponse.json(

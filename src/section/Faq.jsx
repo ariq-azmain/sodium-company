@@ -1,7 +1,8 @@
 'use client';
 import { Element } from "react-scroll";
-import { faq } from "@/constant";
 import {FaqItem} from "@/components";
+import { faq } from '@/constants';
+
 
 const Faq = () => {
   const halfLength = Math.floor(faq.length / 2);

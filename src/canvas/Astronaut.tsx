@@ -5,7 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 
 import {CanvasLoader, Lights} from "@/components";
 
-import Astronaut from '@/models/Astronaut.jsx';
+import Astronaut from './models/Astronaut.jsx';
 
 const AstronautCanvas = () => {
   return (

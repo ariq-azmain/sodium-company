@@ -1,7 +1,7 @@
 // src/app/api/auth/verify-code/route.js
 import { NextResponse } from 'next/server';
-import dbConnect from '@/app/lib/dbConnect';
-import VerificationCode from '@/app/lib/models/VerificationCode';
+import dbConnect from '@/lib/dbConnect';
+import VerificationCode from '@/lib/models/VerificationCode';
 import { z } from 'zod';
 import jwt from 'jsonwebtoken';
 

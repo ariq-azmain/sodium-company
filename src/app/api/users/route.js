@@ -1,6 +1,6 @@
 // src/app/api/users/route.js
-import dbConnect from "@/app/lib/dbConnect";
-import User from "@/app/lib/models/User";
+import dbConnect from "@/lib/dbConnect";
+import User from "@/lib/models/User";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import jwt from "jsonwebtoken";

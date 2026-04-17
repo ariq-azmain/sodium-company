@@ -1,12 +1,12 @@
-import dbConnect from '@/app/lib/dbConnect';
-import User from '@/app/lib/models/User';
+import dbConnect from '@/lib/dbConnect';
+import User from '@/lib/models/User';
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
 
 // GET: Fetch a single user by ID
 export async function GET(request, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // Validate if the ID is a valid MongoDB ObjectId
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -39,7 +39,7 @@ export async function GET(request, { params }) {
 // PUT: Update a user by ID
 export async function PUT(request, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     if (!mongoose.Types.ObjectId.isValid(id)) {

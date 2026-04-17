@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { motion } from "framer-motion";
 import { Mail, AtSign, User, Eye, EyeOff, KeyRound, ArrowLeft } from 'lucide-react';
 
-import '@/css/ragister.css';
+import '@/css/register.css';
 import { AstronautCanvas } from '@/canvas'
 
 type ActiveTab = 'login' | 'register';

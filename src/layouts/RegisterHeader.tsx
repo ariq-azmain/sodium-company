@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
 import {Logo} from '@/components'
@@ -8,9 +9,9 @@ function RegisterHeader() {
       <header className="rag-header">
          <Logo/>
          <div className="rag-header-actions">
-            <a href="/" className="back-btn">
+            <Link href="/" className="back-btn">
                <FaArrowLeft className="arrow"/>
-            </a>
+            </Link>
          </div>
       </header>
    );

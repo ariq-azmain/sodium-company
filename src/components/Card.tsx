@@ -1,8 +1,8 @@
 "use client";
 
 interface CardProps {
-  title: string;
-  description: string;
+   title: string;
+   description: string;
 }
 
 /**
@@ -16,9 +16,9 @@ interface CardProps {
  * We do NOT add overflow:hidden anywhere inside the card itself.
  */
 const Card = ({ title, description }: CardProps) => {
-  return (
-    <div
-      className="
+   return (
+      <div
+         className="
         relative flex flex-col gap-3
         rounded-2xl !p-6
         border border-[var(--glass-border)]
@@ -26,19 +26,24 @@ const Card = ({ title, description }: CardProps) => {
         backdrop-blur-[15px]
         w-full h-full
         card
+bg-blur
       "
-    >
-      <h3 className="text-white font-semibold text-lg leading-snug
-      tracking-tight selection:text-auto selection:bg-[#62626200]">
-        {title}
-      </h3>
+      >
+         <h3
+            className="text-white font-semibold text-lg leading-snug
+      tracking-tight selection:text-auto selection:bg-[#62626200]"
+         >
+            {title}
+         </h3>
 
-      <p className="text-[#ddd] text-sm font-light leading-relaxed
-      selection:text-[#b3fbff] selection:bg-[#626262bf] selection:backdrop-blur">
-        {description}
-      </p>
-    </div>
-  );
+         <p
+            className="text-[#ddd] text-sm font-light leading-relaxed
+      selection:text-[#b3fbff] selection:bg-[#626262bf] selection:backdrop-blur"
+         >
+            {description}
+         </p>
+      </div>
+   );
 };
 
 export default Card;

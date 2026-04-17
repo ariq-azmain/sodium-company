@@ -1,15 +1,16 @@
-import Button from "./Button.jsx";
+import Button from "./Button.tsx";
 import Card from "./Card.tsx";
 import CanvasLoader from "./CanvasLoader.tsx";
 import FaqItem from "./FaqItem.jsx";
-import CTA from "./CTA.jsx";
-import Hero from "./Hero.jsx";
-import Lights from "./Lights.jsx";
-import { Marker } from "./Marker.jsx";
+import CTA from "./CTA.tsx";
+import Hero from "./Hero.tsx";
+import Lights from "./Lights.tsx";
+import { Marker } from "./Marker.tsx";
 import Logo from "./Logo.tsx";
 import ChoiceCard from "./ChoiceCard.tsx";
 import FeatureItem from "./FeatureItem.tsx";
-
+import Alert from "./Alert.tsx";
+import Input from "./Input.tsx";
 
 export {
    Button,
@@ -22,5 +23,7 @@ export {
    Lights,
    Logo,
    ChoiceCard,
-   FeatureItem
+   FeatureItem,
+   Alert,
+   Input
 };

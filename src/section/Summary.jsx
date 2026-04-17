@@ -1,5 +1,5 @@
 'use client';
-import { textVariant, showIn } from '@/utils/motion.js'
+import { textVariant, showIn } from '@/utility/motion.ts'
 
 import { motion } from "framer-motion"
 import '@/css/summary.css';

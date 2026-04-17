@@ -8,11 +8,7 @@
     @apply relative z-[20];
   }
   .hero h1 {
-    text-shadow: 0 0 9px #000;
     @apply text-[56px] leading-[1.2] mb-[20px] font-black;
-  }
-  .hero h1 span {
-    @apply text-[var(--purple)];
   }
   .hero p {
     @apply max-w-[600px] mb-[30px] text-[#ccc] opacity-0;
@@ -25,7 +21,15 @@
     transform: translateY(-50%);
   }
   .eyebrow {
-    @apply text-[13px] font-semibold tracking-[3px] uppercase
+    @apply text-[13px] font-semibold tracking-[2px] uppercase
            text-[var(--purple)] mb-4 opacity-80;
+  }
+}
+@layer utility {
+  .marke .gt{
+    @apply text-[var(--purple)]
+  }
+  .gt{
+      @apply bg-gradient-to-t from-slate-400 to-white bg-clip-text text-transparent;
   }
 }

@@ -1,13 +1,14 @@
+'use client';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-import { members } from '@/constant';
+import { members } from '@/constants';
 import {BallCanvas} from '@/canvas';
 
 const Members = () => {
   return (
     <>
     <h1  className='text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] !m-[20px] block '>
-      Mambers Of <span className='sodium'>SODIUM</span>
+      Members Of <span className='sodium'>SODIUM</span>
     </h1>
     <section className='flex flex-row flex-wrap justify-center'>
     {
@@ -35,7 +36,7 @@ const Members = () => {
       ))
     }
     </section>
-    </>
+</>
   )
 }
 

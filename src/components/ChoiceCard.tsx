@@ -28,9 +28,11 @@ const ChoiceCard = ({
    id,
    button
 }: Props) => {
-  var i
    return (
-      <div className={`choice-card ${role ? ' role-card ' : ' member-card '}`} id={id}>
+      <div
+         className={`choice-card ${role ? " role-card " : " member-card "}`}
+         id={id}
+      >
          <div className="card-icon">
             {role ? <FaUserTag /> : <FaUsers className="user" />}
          </div>

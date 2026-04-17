@@ -12,7 +12,6 @@
   --warning:      #f59e0b;
   --gold:         #fbbf24;
 }
-
 /* ─── Scrollbar hidden globally ─────────────────────────────────────── */
 *, *::before, *::after {
   scrollbar-width: none;
@@ -27,6 +26,7 @@ canvas { background: transparent; }
 @layer base {
   html {
     scroll-behavior: smooth;
+overflow-x: hidden;
   }
   body {
     @apply bg-[#131313] text-white overflow-x-hidden pb-[200vh];
@@ -126,10 +126,14 @@ canvas { background: transparent; }
     animation: glowPulse 2.5s infinite;
     @apply block mx-auto text-center rounded-[30px] text-white font-semibold
            text-sm no-underline relative overflow-hidden
-           transition-[transform,box-shadow] duration-200
+           transition-all duration-500
            hover:-translate-y-[10px] hover:scale-110
            hover:shadow-[0_0_60px_var(--blue),0_0_80px_var(--purple)];
   }
+.cta-btn:hover{
+@apply -translate-y-[10px] scale-120
+           shadow-[0_0_60px_var(--blue),0_0_80px_var(--purple)];
+}
   .cta-btn::before {
     content: '';
     position: absolute;
@@ -158,9 +162,16 @@ canvas { background: transparent; }
     @apply flex items-center gap-3;
   }
   .logo-icon {
-    background: linear-gradient(135deg, var(--purple), var(--blue));
+    background: linear-gradient(135deg, #b372f1, #4c0baf);
     @apply w-10 h-10 rounded-[10px] flex items-center justify-center
-           font-bold text-[20px] text-white;
+           font-bold text-[20px] text-white transition-all duration-700
+           selection:bg-[#00000000]! selection:text-[#fff]!;
+    background-size: cover;
+  }
+  .logo-icon:hover {
+/*     background: linear-gradient(135deg, #4c0baf, var(--purple)); */
+    background: linear-gradient(135deg, #b372f1, #4c0baf);
+    background-position-y: -40px; 
   }
   .logo-text {
     @apply font-bold text-white text-2xl tracking-[2px];
@@ -186,7 +197,7 @@ canvas { background: transparent; }
   }
   .card:hover {
     box-shadow: 0 0 35px var(--purple), 0 0 60px var(--blue);
-    @apply -translate-y-[10px];
+    @apply -translate-y-[0px];
   }
 
   /* ── Button hover (inner) ── */
@@ -216,15 +227,15 @@ canvas { background: transparent; }
   }
 
   /* ── Custom box shadows ── */
+}
+
+/* ─── @layer utilities — Single-purpose utility extensions ─────────── */
+@layer utilities {
   .shadow-100 { box-shadow: 0px 4px 4px rgba(0,0,0,.25), 0px 16px 24px rgba(0,0,0,.25), inset 0px 3px 6px #1959AD; }
   .shadow-200 { box-shadow: 0px 4px 4px rgba(0,0,0,.25), 0px 16px 24px rgba(0,0,0,.25), inset 0px 4px 10px #3391FF; }
   .shadow-300 { box-shadow: 0px 4px 4px rgba(0,0,0,.25), 0px 16px 24px rgba(0,0,0,.25), inset 0px 3px 6px #1959AD; }
   .shadow-400 { box-shadow: inset 0px 2px 4px 0 rgba(255,255,255,.05); }
   .shadow-500 { box-shadow: 0px 16px 24px rgba(0,0,0,.25), 0px -14px 48px rgba(40,51,111,.7); }
-}
-
-/* ─── @layer utilities — Single-purpose utility extensions ─────────── */
-@layer utilities {
 
   /* Gradient backgrounds */
   .g1 { background: linear-gradient(rgba(196,203,245,.5), transparent); }

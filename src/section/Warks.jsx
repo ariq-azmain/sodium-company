@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 
 import "react-vertical-timeline-component/style.min.css";
 
-import { warks } from "@/constant";
-import { textVariant } from "@/utils/motion";
+import { warks } from "@/constants";
+import { textVariant } from "@/utility/motion";
 
 const WarkCard = ({ wark }) => {
   return (
@@ -16,7 +16,7 @@ const WarkCard = ({ wark }) => {
       contentStyle={{
         background: "#1d1836",
         color: "#cec1aa",
-        borderRadus: '50px'
+        borderRadius: '50px'
       }}
       contentArrowStyle={{ borderRight: "7px solid  #531a54" }}
       iconStyle={{ background: wark.iconBg }}
@@ -51,7 +51,7 @@ const WarkCard = ({ wark }) => {
 const Wark = () => {
   return (
     <>
-      <motion.div variants={textVariant(null, 0)}>
+      <motion.div variants={textVariant("bottom", 0)}>
         <p className='sm:text-[18px] text-[14px] text-secondary uppercase
         tracking-wider text-center selection:text-[#ffffff00]
         selection:bg-[#ffffff00]'>

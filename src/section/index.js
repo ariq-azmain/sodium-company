@@ -1,6 +1,6 @@
 import Header from './Header.tsx'
 import Summary from './Summary.jsx'
-import Wark from './Wark.jsx'
+import Warks from './Warks.jsx'
 import Contact from './Contact.jsx'
 import Faq from './Faq.jsx';
 import Members from './Members.jsx';
