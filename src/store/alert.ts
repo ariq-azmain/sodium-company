@@ -1,30 +1,38 @@
 import { create } from "zustand";
 
-export const useAlert = create<{
-   massage: string | undefined;
-   mode: "error" | "warn" | "success" | undefined;
-   show: (
-      mod: "error" | "warn" | "success" | undefined,
-      msg: string | undefined
-   ) => void;
-   hide: () => void;
-}>(set => ({
-   massage: undefined,
-   mode: undefined,
-   show: (
-      msg: string | undefined,
-      duration: number | undefined,
-      mod: "error" | "warn" | "success" | undefined,
-   ) => {
-      set(state => {
-         setTimeout(() => state.hide(), duration??5555);
-         return { massage: msg, mode: mod };
-      });
-   },
-   hide: () =>
-      set(state => ({
-         massage: undefined,
-         mode: undefined,
-         duration: undefined
-      }))
+interface AlertState {
+  message: string | undefined;
+  mode: "error" | "warn" | "success" | undefined;
+  duration: number | undefined; // এখানে duration যুক্ত করা হয়েছে
+  show: (
+    msg: string | undefined, 
+    mod: "error" | "warn" | "success" | undefined,
+    duration?: number
+  ) => void;
+  hide: () => void;
+}
+
+export const useAlert = create<AlertState>((set) => ({
+  message: undefined,
+  mode: undefined,
+  duration: undefined,
+  
+  show: (msg, mod, duration) => {
+    set((state) => {
+      // আগের কোনো টাইমআউট থাকলে তা পরিষ্কার করার জন্য এটি ভালো অভ্যাস
+      setTimeout(() => {
+        // সরাসরি state.hide() কল না করে বাইরের hide ফাংশন ব্যবহার করা নিরাপদ
+        set({ message: undefined, mode: undefined, duration: undefined });
+      }, duration ?? 5555);
+
+      return { message: msg, mode: mod, duration: duration };
+    });
+  },
+
+  hide: () =>
+    set({
+      message: undefined,
+      mode: undefined,
+      duration: undefined,
+    }),
 }));
