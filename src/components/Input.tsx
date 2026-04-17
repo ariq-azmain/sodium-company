@@ -2,11 +2,11 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
-const Input = ({ handleSubmit }) => {
+const Input = () => {
    const [isShow, setIsShow] = useState<boolean>(false);
    const [secret, setSecret] = useState<string>("");
    return (
-      <form onSubmit={handleSubmit}>
+      <form>
          <label className="block" htmlFor="secret">
             Enter Secret
             <input
