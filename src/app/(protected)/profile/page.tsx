@@ -38,8 +38,9 @@ alt='loading...'
    return (
       <div>
          <div>
-            <span>{user?.username.slice(0, 1)}</span>
+            <span>{user?.username?.slice(0, 1)}</span>
          </div>
+         <p>{user?.username}</p>
          <p>{user?.email}</p>
          <p>
             Your Request Is <span>{user?.status}</span>
